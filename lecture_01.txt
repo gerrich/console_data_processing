@@ -1,0 +1,65 @@
+%title: Linux Console for Data Analysis 
+%author: George Ivanov 
+%date: 2017-02-21
+
+-> # Linux Multimedia hacks <-
+==============================
+
+http://archive.oreilly.com/pub/ht/196
+
+## Music player
+brew install mpg123
+mpg123 spinning_around.mp3
+
+## Images
+http://caca.zoy.org/wiki/libcaca
+brew reinstall libcaca --with-imlib2
+cacaview goose.png
+img2txt lena.png  --width 89 --height 40
+
+https://csl.name/jp2a/
+brew install jp2a
+jp2a lena.jpg
+
+## Movie player
+brew install mpv --with-libcaca
+mpv 'https://www.youtube.com/watch?v=ooJJX3R42WM' -vo caca 2>/dev/null
+mpv 'https://www.youtube.com/watch?v=QH2-TGUlwu4' -vo caca 2>/dev/null
+mpv 'https://www.youtube.com/watch?v=lskNTCzdLNE' -vo caca 2>/dev/null
+
+------
+
+# Presentation tools
+https://github.com/visit1985/mdp
+brew install mdp
+mdp console_01.txt
+
+https://github.com/tybenz/vimdeck
+gem install vimdeck
+vimdeck <file_name.md>
+
+------
+
+# Emulate Ubuntu Linux
+$ vagrant box add ubuntu/xenial64
+...
+$ mkdir -p ~/vagrant/ubuntu-xenial64
+$ cd ~/vagrant/ubuntu-xenial64
+$ vagrant init ubuntu/xenial64
+
+## Docker
+$ docker pull ubuntu:16.04
+$ docker create --name myos -i -t ubuntu:16.04
+23b7c91b0f2a173aef1033fe649627404e3b2792792861adcada46e99a726b1a
+$ docker start myos
+myos
+$ docker exec myos /bin/bash
+$ docker exec -it myos /bin/bash
+# apt-get update
+# apt-get install -y inetutils-ping netcat htop vim
+...
+^D
+$ docker stop myos
+$ docker ps -a | grep ubuntu 
+23b7c91b0f2a        ubuntu:16.04        "/bin/bash"         2 minutes ago       Up 2 minutes                            myos
+
