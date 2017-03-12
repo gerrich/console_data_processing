@@ -8,7 +8,7 @@ set -euo pipefail
 
 ALL_COUNT=0
 OK_COUNT=0
-for data in $(ls *.dat); do
+for data in $(ls ${DIR}/*.dat); do
     ans="${data%.*}".ans
     out="${data%.*}".out
     args="${data%.*}".args
